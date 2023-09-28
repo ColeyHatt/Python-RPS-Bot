@@ -1,2 +1,2 @@
 # RPS-Bot
-Rock Paper Scissors Robot
+Rock Paper Scissors Robot but in Python
