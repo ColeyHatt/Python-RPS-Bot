@@ -1,124 +1,65 @@
-#Rock Paper Scissors
 import random
+import tkinter as tk
+
 attempt = 0
 win = 0
 lose = 0
+#1 = Paper
+#2 = Rock
+#3 = Scissors
+def rock():
+    global attempt
+    attempt = attempt + 1
+    rps = random.randint(1, 3)  #computers choice
+    if rps == 1:
+        RvPLabel = tk.Label(text="You lose, try again.")
+        RvPLabel.pack()
+    if rps == 2:
+        RvRLabel = tk.Label(text="Draw, try again.")
+        RvRLabel.pack()
+    if rps == 3:
+        RvSLabel = tk.Label(text="You win! Try again?")
+        RvSLabel.pack()
+        
+def paper():
+    global attempt
+    attempt = attempt + 1
+    rps = random.randint(1, 3)  #computers choice
+    if rps == 1:
+        SvPLabel = tk.Label(text="You lose, try again.")
+        SvPLabel.pack()
+    if rps == 2:
+        PvPLabel = tk.Label(text="Draw, try again.")
+        PvPLabel.pack()
+    if rps == 3:
+        PvRLabel = tk.Label(text="You win! Try again?")
+        PvRLabel.pack()
+        
+def scissors():
+    global attempt
+    attempt = attempt + 1
+    rps = random.randint(1, 3)  #computers choice
+    if rps == 1:
+        SvPLabel = tk.Label(text="You lose, try again.")
+        SvPLabel.pack()
+    if rps == 2:
+        SvSLabel = tk.Label(text="Draw, try again.")
+        SvSLabel.pack()
+    if rps == 3:
+        SvRLabel = tk.Label(text="You win! Try again?")
+        SvRLabel.pack()
 
-def quit():
-    a = (input("You seem to be quitting, are you sure?: "))
-    if a[0] == "y" or "Y":
-      print("Alright! Hope to see you soon!")
-      global attempt
-      attempt = 0
-      global win
-      win = 0
-      global lose
-      lose = 0
-      pass
-    if a[0] == "n" or "N":
-      print("Alright, have fun!")
-      return rps2()
+window = tk.Tk()
 
-def stats():
-  print(f"Wins: {win}")
-  print(f"Losses: {lose}")
-  rps2()
+window.title("Rock Paper Scissors")
+greeting = tk.Label(text="Rock Paper Scissors?")
+greeting.pack()
 
-print("Rock Paper Scissors")
-print("Quit by typing 'Quit'")
-print("Check Stats with 'Data'")
-def rps2():
-  I = (input("Rock, Paper or Scissors?: "))  #user input
-  capitalizedShape = I.capitalize()  #input check/spellcheck
-  global attempt
-  attempt = attempt + 1
-  rps = random.randint(1, 3)  #computers choice
-  if capitalizedShape[0] == "R":  #Rock
-      print("You chose Rock")
-      for x in range(1):
-        if rps == 1:  #Duplicate
-          print("Rock")
-          print("Even, try again!")
-          attempt
-          return (rps2())
-        elif rps == 2:  #Scissors
-          print("Scissors")
-          print("You win, try again!")
-          print(f"Attempt: {attempt}")
-          global win
-          win = win + 1
-          win
-          print(f"Wins: {win}")
-          return (rps2())
-        elif rps == 3:  #Paper
-          print("Paper")
-          print("You lose, try again!")
-          attempt
-          global lose
-          lose = lose + 1
-          lose
-          print (f"Losses: {lose}")
-          print(f"Attempt: {attempt}")
-          return (rps2())
-  if capitalizedShape[0] == "S":
-      print("You chose Scissors")
-      for y in range(1):
-          if rps == 1:
-                print("Rock")  #Rock
-                print("You lose, try again!")
-                attempt
-                lose = lose + 1
-                lose
-                print (f"Losses: {lose}")
-                print(f"Attempt: {attempt}")
-                return (rps2())
-          elif rps == 2:
-                print("Scissors")
-                print("Even, try again!")
-                attempt
-                print(f"Attempt: {attempt}")
-                return (rps2())
-          elif rps == 3:  #Paper
-                print("Paper")
-                print("You win, try again!")
-                attempt
-                win = win + 1
-                win
-                print(f"Wins: {win}")
-                print(f"Attempt: {attempt}")
-                return (rps2())
-  if capitalizedShape[0] == "P":
-    print("You chose Paper")
-    for z in range(1):
-            if rps == 1:
-                print("Rock")  #Rock
-                print("You win, try again!")
-                attempt
-                win = win + 1
-                win
-                print(f"Wins: {win}")
-                print(f"Attempt: {attempt}")
-                return (rps2())
-            elif rps == 2:  #Scissors
-                print("Scissors")
-                print("You lose, try again!")
-                attempt
-                lose = lose + 1
-                lose
-                print (f"Losses: {lose}")
-                print(f"Attempt: {attempt}")
-                return (rps2())
-            elif rps == 3:  #Duplicate
-                print("Paper")
-                print("Even, try again!")
-                attempt
-                print(f"Attempt: {attempt}")
-                return (rps2())
-  if capitalizedShape[0] == "Q":
-      quit()
-  if capitalizedShape[0] == "D":
-      stats()
-  else:
-      print("Try again!")
-      return (rps2())
-rps2()
+Rbutton = tk.Button(text="Rock", command = rock)
+Rbutton.pack(side=tk.TOP)
+Pbutton = tk.Button(text="Paper", command = paper)
+Pbutton.pack(side=tk.TOP)
+Sbutton = tk.Button(text="Scissors", command = scissors)
+Sbutton.pack(side=tk.TOP)
+window.mainloop()
+
